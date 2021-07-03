@@ -72,6 +72,16 @@ INSERT INTO students (name, university_id) VALUES
 ('Bob', 2),
 ('John', 1);
 
+DROP TABLE IF EXISTS products CASCADE;
+CREATE TABLE products (id bigserial PRIMARY KEY, title VARCHAR(255), cost int);
+INSERT INTO products (title, cost) VALUES
+('Product 1', 100),
+('Product 2', 200),
+('Product 3', 300),
+('Product 4', 400),
+('Product 5', 500),
+('Product 6', 600);
+
 DROP TABLE IF EXISTS validation_beans CASCADE;
 CREATE TABLE validation_beans (id bigserial PRIMARY KEY, email VARCHAR(255), priority int DEFAULT 5, postal_code varchar(6), created_at timestamp, updated_at timestamp);
 INSERT INTO validation_beans (email, priority, postal_code) VALUES
@@ -124,8 +134,8 @@ DROP TABLE IF EXISTS orders CASCADE;
 CREATE TABLE orders (id bigserial PRIMARY KEY, title varchar(255));
 INSERT INTO orders (title) VALUES ('order 1');
 
-DROP TABLE IF EXISTS products CASCADE;
-CREATE TABLE products (id bigserial PRIMARY KEY, title varchar(255), price int, order_id bigint references orders(id));
-INSERT INTO products (title, price, order_id) VALUES ('product 1', 100, 1);
+-- DROP TABLE IF EXISTS products CASCADE;
+-- CREATE TABLE products (id bigserial PRIMARY KEY, title varchar(255), price int, order_id bigint references orders(id));
+-- INSERT INTO products (title, price, order_id) VALUES ('product 1', 100, 1);
 
 COMMIT;
