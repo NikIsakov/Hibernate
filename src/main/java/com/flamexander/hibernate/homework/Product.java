@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -24,10 +25,14 @@ public class Product {
     @Column(name = "cost")
     private int cost;
 
-    public Product(String title, int cost) {
-        this.title = title;
-        this.cost = cost;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "products_buyers",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "buyer_id")
+    )
+
+    private List<Buyer> buyers;
 
     @Override
     public String toString() {

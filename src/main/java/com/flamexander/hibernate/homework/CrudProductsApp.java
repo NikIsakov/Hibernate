@@ -10,7 +10,7 @@ public class CrudProductsApp {
 
     public static void main(String[] args) {
         init();
-        create();
+        //create();
     }
 
     public static void init() {
@@ -44,17 +44,17 @@ public class CrudProductsApp {
         }
     }
 
-    public static void create() {
-        try (Session session = factory.getCurrentSession()) {
-            session.beginTransaction();
-            Product product = new Product("Product #",1200);
-            System.out.println(product);
-            session.saveOrUpdate(product);
-            System.out.println(product);
-            session.getTransaction().commit();
-            System.out.println(product);
-        }
-    }
+//    public static void create() {
+//        try (Session session = factory.getCurrentSession()) {
+//            session.beginTransaction();
+//            Product product = new Product("Product #",1200);
+//            System.out.println(product);
+//            session.saveOrUpdate(product);
+//            System.out.println(product);
+//            session.getTransaction().commit();
+//            System.out.println(product);
+//        }
+//    }
 
     public static void read() {
         try (Session session = factory.getCurrentSession()) {

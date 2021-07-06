@@ -82,6 +82,24 @@ INSERT INTO products (title, cost) VALUES
 ('Product 5', 500),
 ('Product 6', 600);
 
+DROP TABLE IF EXISTS buyers CASCADE;
+CREATE TABLE buyers (id bigserial PRIMARY KEY, name VARCHAR(255));
+INSERT INTO buyers (name) VALUES
+('buyer 1'),
+('buyer 2');
+
+DROP TABLE IF EXISTS products_buyers CASCADE;
+CREATE TABLE products_buyers (product_id bigint, buyer_id bigint, FOREIGN KEY (product_id) REFERENCES products (id), FOREIGN KEY (buyer_id) REFERENCES buyers (id));
+INSERT INTO products_buyers (product_id, buyer_id) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(1, 2),
+(2, 2);
+
 DROP TABLE IF EXISTS validation_beans CASCADE;
 CREATE TABLE validation_beans (id bigserial PRIMARY KEY, email VARCHAR(255), priority int DEFAULT 5, postal_code varchar(6), created_at timestamp, updated_at timestamp);
 INSERT INTO validation_beans (email, priority, postal_code) VALUES
