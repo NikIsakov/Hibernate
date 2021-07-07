@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @AllArgsConstructor
@@ -31,6 +32,10 @@ public class Buyer {
     )
     private List<Product> products;
 
+    public Buyer(String name) {
+        this.name = name;
+    }
+
     public List<Product> getProducts() {
         return products;
     }
@@ -46,4 +51,5 @@ public class Buyer {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }

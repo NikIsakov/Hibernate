@@ -31,8 +31,12 @@ public class Product {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "buyer_id")
     )
-
     private List<Buyer> buyers;
+
+    public Product(String title, int cost) {
+        this.title = title;
+        this.cost = cost;
+    }
 
     @Override
     public String toString() {
